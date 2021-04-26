@@ -1,14 +1,13 @@
 from config import SERVICES
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify, request
-import logging, requests
+import requests
 
 
 app = Flask(__name__)
 
 # logging configuration
 # logging.basicConfig(filename=Config.LOG_FILE, level=logging.DEBUG, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-app.logger.info('Successfully configured logs')
 
 # function #
 def get_text(website):
