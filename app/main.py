@@ -37,10 +37,13 @@ def get_text(website):
     text = text.lower()
     return text
 
-def qualification(website):
+def qualification(website, services):
     res = []
+    # si aucun service n'est renseigné
+    if services == []:
+        services = SERVICES
     text = get_text(website)
-    for service in SERVICES:
+    for service in services:
         if service in text:
             res.append(service)
     return res
@@ -52,9 +55,13 @@ def qualification_route():
     Qualifie un prospect
     ---
     parameters:
-      - name: mail
+      - name: website
         in: POST
         type: string
+        required: true
+      - name: services
+        in: POST
+        type: [string]
         required: true
     responses:
       200:
@@ -69,7 +76,8 @@ def qualification_route():
     try:
       jdata = request.get_json()
       website = jdata.get('website')
-      result = qualification(website)
+      services = jdata.get('services')
+      result = qualification(website, services)
       indice = len(result)
       return jsonify(list=result, indice=indice)
     except Exception as e:
