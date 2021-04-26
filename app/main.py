@@ -75,7 +75,4 @@ def qualification_route():
       return jsonify(list=result, indice=indice)
     except Exception as e:
       return jsonify(type=str(type(e)), message=str(e)), 500
-
-
-if __name__ == "__main__":
-    app.run()    
+ 

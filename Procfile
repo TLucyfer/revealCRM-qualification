@@ -1,1 +1,1 @@
-worker: python3 script.py
+web: gunicorn wsgi:app
