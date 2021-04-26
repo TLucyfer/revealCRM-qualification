@@ -49,7 +49,7 @@ def qualification(website, services):
     return res
                 
 # endpoint #
-@app.route('/qualification', methods=['GET'])
+@app.route('/qualification', methods=['POST'])
 def qualification_route():
     """
     Qualifie un prospect
